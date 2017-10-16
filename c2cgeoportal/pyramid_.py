@@ -280,6 +280,8 @@ def _match_url_start(ref, val):
 
 
 def is_valid_referer(request, settings):
+    if request.method == 'GET':
+        return True
     if request.referer is not None:
         list_ = settings.get("authorized_referers", [])
         return any(_match_url_start(x, request.referer) for x in list_)
