@@ -44,7 +44,7 @@ Then, add the routing component to the ``gmf-app-tools-content`` area::
 Configuration
 -------------
 
-In the same interface template where the button and the component were added, the `ngeoRoutingOptions` can be defined. Example::
+In the same interface template where the button and the component were added, the `ngeoRoutingOptions` and `ngeoNominatimSearchDefaultParams` can be defined. Example::
 
     var module = angular.module('app');
     module.constant('ngeoRoutingOptions', {
@@ -52,10 +52,11 @@ In the same interface template where the button and the component were added, th
       'profiles': [
         {label : 'Car', profile: 'routed-car'},
         {label : 'Bike (City)', profile: 'routed-bike'}
-      ],
-      'searchDefaultParams' : {
+      ]
+    });
+
+    module.constant('ngeoNominatimSearchDefaultParams', {
         'countrycodes': 'CH'
-      }
     });
 
 backendUrl
@@ -80,8 +81,8 @@ profile: string, url-path of the profile, example::
 If more than one profile are supplied, the component will show a drop-down-menu for the user to select a profile.
 
 
-searchDefaultParams
-^^^^^^^^^^^^^^^^^^^
+ngeoNominatimSearchDefaultParams
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 not required, dictionary of string-parameters
 
 Configures the nominatim search, which is used to search for addresses and features in the routing search fields.
