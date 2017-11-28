@@ -1,7 +1,7 @@
 .. _integrator_routing:
 
-Routing interface (only with ngeo)
-==================================
+Routing interface
+=================
 
 This section describes how to add the `OSRM routing <http://project-osrm.org/>`_ interface to a c2cgeoprtal application.
 
