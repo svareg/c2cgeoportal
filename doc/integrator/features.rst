@@ -19,3 +19,4 @@ Features that require additional steps (most of the time):
    intranet
    urllogin
    pdfreport
+   features
