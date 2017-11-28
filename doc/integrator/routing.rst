@@ -33,9 +33,7 @@ Then, add the routing component to the ``gmf-app-tools-content`` area::
           {{'Routing'|translate}}
           <a class="btn close" ng-click="mainCtrl.routingfeatureActive = false">&times;</a>
         </div>
-        <ngeo-routing
-                ngeo-routing-active="mainCtrl.routingfeatureActive"
-                ngeo-routing-map="mainCtrl.map">
+        <ngeo-routing ngeo-routing-map="mainCtrl.map">
         </ngeo-routing>
       </div>
     </div>
