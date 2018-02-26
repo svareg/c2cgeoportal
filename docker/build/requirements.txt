@@ -1,7 +1,6 @@
 -r fixversions.txt
 alabaster==0.7.10  # Doc theme
 Babel==2.5.3  # i18n
-boto==2.48.0  # Tile generation
 bottle==0.12.13  # i18n
 c2c.cssmin==0.7.dev6  # CGXP build
 c2c.template==2.0.6  # geoportal
@@ -35,7 +34,6 @@ papyrus==2.3  # geoportal
 PasteScript==2.0.2  # geoportal-pcreate
 pep8==1.7.1  # lint
 pep8-naming==0.5.0  # Lint
-Pillow==5.0.0  # Tile generation
 polib==1.1.0  # i18n
 pycrypto==2.6.1  # geoportal
 pyflakes==1.6.0  # lint
