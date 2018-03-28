@@ -1,9 +1,7 @@
 ---
 vars:
   build_volume_name: '{BUILD_VOLUME_NAME}'
-  main_version:
-    "'.'.join(__import__('pkg_resources').get_distribution('c2cgeoportal_commons')
-    .version.split('.')[0:2])"
+  main_version: '{MAIN_VERSION}'
   major_version: '{MAJOR_VERSION}'
   dbuser: www-data
   dbpassword: www-data
@@ -32,13 +30,10 @@ vars:
   tx_version: '{TX_VERSION}'
   tx_languages: '{LANGUAGES}'
 
-interpreted:
-  python:
-    - main_version
-
 environment:
   - BUILD_VOLUME_NAME
   - TX_VERSION
   - LANGUAGES
   - GIT_BRANCH
   - MAJOR_VERSION
+  - MAIN_VERSION

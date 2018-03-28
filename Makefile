@@ -14,11 +14,12 @@ PRERULE_CMD ?= @echo "Build \033[1;34m$@\033[0m due modification on \033[1;34m$?
 endif
 endif
 
+export MAIN_VERSION = 2.3
 ifdef TRAVIS_TAG
 export MAJOR_VERSION = $(TRAVIS_TAG)
 export MAIN_BRANCH = $(TRAVIS_TAG)
 else
-export MAJOR_VERSION = 2.3
+export MAJOR_VERSION = $(MAIN_VERSION)
 export MAIN_BRANCH = master
 endif
 
@@ -109,7 +110,6 @@ checks: flake8 mypy git-attributes quote spell yamllint pylint eof-newline addit
 
 .PHONY: clean
 clean:
-	rm --force $(BUILD_DIR)/venv.timestamp
 	rm --force $(BUILD_DIR)/c2ctemplate-cache.json
 	rm --force geoportal/c2cgeoportal_geoportal/locale/*.pot
 	rm --force geoportal/c2cgeoportal_admin/locale/*.pot
@@ -384,9 +384,9 @@ $(APPS_PACKAGE_PATH)/static-ngeo/images/%: ngeo/contribs/gmf/apps/desktop/image/
 
 # Templates
 
-$(BUILD_DIR)/c2ctemplate-cache.json: $(VARS_FILES) $(BUILD_DIR)/commons.timestamp
+$(BUILD_DIR)/c2ctemplate-cache.json: $(VARS_FILES)
 	$(PRERULE_CMD)
-	$(BUILD_DIR)/venv/bin/python /usr/local/bin/c2c-template --vars $(VARS_FILE) --get-cache $@
+	c2c-template --vars $(VARS_FILE) --get-cache $@
 
 %: %.mako $(BUILD_DIR)/c2ctemplate-cache.json
 	$(PRERULE_CMD)
@@ -463,14 +463,4 @@ $(BUILD_DIR)/%.mo.timestamp: %.po
 	$(PRERULE_CMD)
 	mkdir --parent $(dir $@)
 	msgfmt -o $*.mo $<
-	touch $@
-
-$(BUILD_DIR)/venv.timestamp:
-	$(PRERULE_CMD)
-	virtualenv --system-site-packages $(BUILD_DIR)/venv
-	touch $@
-
-$(BUILD_DIR)/commons.timestamp: $(BUILD_DIR)/venv.timestamp
-	$(PRERULE_CMD)
-	$(BUILD_DIR)/venv/bin/pip install --editable=commons
 	touch $@
